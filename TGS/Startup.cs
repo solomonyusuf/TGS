@@ -122,9 +122,12 @@ namespace TGS
 
                 spa.Options.SourcePath = "ClientApp";
 
-                spa.Options.StartupTimeout = TimeSpan.FromSeconds(700);
-                spa.UseAngularCliServer(npmScript: "start");
+                if (env.IsDevelopment())
+                {
+                    spa.Options.StartupTimeout = TimeSpan.FromSeconds(700);
+                    spa.UseAngularCliServer(npmScript: "start");
 
+                }
             });
         }
     }
