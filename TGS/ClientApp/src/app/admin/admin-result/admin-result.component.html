@@ -1,0 +1,45 @@
+
+
+      <div class="col-md-12">
+        <div class="container-fluid">
+          <h3 class="text-dark mb-4">Database Results&nbsp;</h3>
+          <div class="card shadow">
+            <div class="card-header py-3">
+              <p class="text-primary m-0 fw-bold">Result Info</p>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <label class="form-label"><input type="search" name="value" [(ngModel)]="value" (ngModelChange)="search()" class="col-md-12 form-control  " aria-controls="dataTable" placeholder="Search Result ID here"></label>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+              <table class="table my-0" id="dataTable">
+                <thead>
+                  <tr>
+                    <th>Result ID</th>
+                    <th>Term</th>
+                    <th>Class</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let result of results">
+                  <tr>
+                    <td style="font-weight:bolder;">{{result.resultId}}</td>
+                    <td>{{result.term}}</td>
+                    <td>{{result.class}}</td>
+                    <td><a routerLink="/resultdetail/{{result.resultId}}" class="btn btn-info">Details</a></td>
+                    <td><button (click)="Delete(result.resultId)" class="btn btn-danger">Delete</button></td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+   
+
+
+

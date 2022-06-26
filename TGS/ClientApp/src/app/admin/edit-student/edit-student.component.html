@@ -1,0 +1,170 @@
+
+
+<div class="col-md-12">
+  <div class="container-fluid" *ngIf=" (detail$|async) as data">
+    <h3 class="text-dark mb-4">Edit Student </h3>
+    <div class="row mb-3">
+      <div class="col-lg-4">
+        <div class="card mb-3">
+          <div class="card-body text-center shadow">
+            <img class="rounded-circle mb-3 mt-4" src="{{data.imgPath}}" width="160" height="160">
+            <div class="col-md-4"> <upload (onUploadFinished)="uploadFinished($event)"></upload></div>
+          </div>
+        </div>
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="text-primary fw-bold m-0">Details</h6>
+          </div>
+          <div class="card-body">
+            <h4 class="small fw-bold" style="color: var(--bs-indigo);font-size: 20px;font-weight: bold;font-style: italic;">{{data.firstName}}&nbsp;{{data.lastName}}</h4>
+            <h4 class="small fw-bold" style="font-weight: bold;font-style: italic;font-size: 18px;">{{data.sex}}</h4>
+            <h4 class="small fw-bold" style="font-size: 18px;font-weight: bold;font-style: italic;">{{data.class}}</h4>
+            <div *ngFor="let parent of data.parent">
+              <h4 class="small fw-bold" style="font-weight: bold;font-style: italic;font-size: 18px;">{{parent.address_1}}</h4>
+              <h4 class="small fw-bold" style="font-weight: bold;font-style: italic;font-size: 18px;">{{parent.phoneNumber_1}}</h4>
+              <h4 class="small fw-bold" style="font-weight: bold;font-style: italic;font-size: 18px;">{{parent.email}}</h4>
+            </div>
+            <h4 class="small fw-bold" style="font-weight: bold;font-style: italic;font-size: 18px;">{{data.totalResults}} </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="row mb-3 d-none">
+          <div class="col">
+            <div class="card textwhite bg-primary text-white shadow">
+              <div class="card-body">
+                <div class="row mb-2">
+                  <div class="col">
+                    <p class="m-0">Peformance</p>
+                    <p class="m-0"><strong>65.2%</strong></p>
+                  </div>
+                  <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                </div>
+                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card textwhite bg-success text-white shadow">
+              <div class="card-body">
+                <div class="row mb-2">
+                  <div class="col">
+                    <p class="m-0">Peformance</p>
+                    <p class="m-0"><strong>65.2%</strong></p>
+                  </div>
+                  <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                </div>
+                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card shadow mb-3">
+              <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">Edit Student </p>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="form">
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3"><label class="form-label"><strong>First Name</strong></label><input formControlName="FirstName" class="form-control" type="text" id="username"></div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3"><label class="form-label"><strong>Middle Name</strong></label><input formControlName="MiddleName" class="form-control" type="email" id="email"></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3"><label class="form-label"><strong>Last Name</strong></label><input formControlName="LastName" class="form-control" type="text" id="first_name"></div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3"><label class="form-label"><strong>Origin State</strong></label><input formControlName="OriginState" class="form-control" type="text" id="last_name"></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label"><strong>Sex</strong></label>
+                        <select formControlName="Sex" class="form-select">
+
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+
+                        </select>
+                      </div>
+
+                    </div>
+                    <div class="col">
+                      <div class="mb-3"><label class="form-label"><strong>Class</strong></label><input formControlName="Class" class="form-control" type="text" id="last_name-1"></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3"><label class="form-label"><strong>Student ID</strong></label><input formControlName="StudentId" disabled="disabled" class="form-control" type="text" id="first_name-3"></div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3"><label class="form-label"><strong>Date of Birth</strong></label><input formControlName="DOB" class="form-control" type="date" id="last_name-3"></div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div class="col">
+                      <label class="form-label"><strong>Status</strong></label>
+                      <select formControlName="Status" class="form-select">
+                        <option value="NULL">---choose Status---</option>
+                        <option value="Graduated">Graduated</option>
+                        <option value="Active">Active</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="card shadow">
+              <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">Edit Parent info </p>
+              </div>
+              <div class="card-body">
+
+                <form [formGroup]="parent">
+                  <div *ngFor="let parent of data.parent">
+                    <div class="row">
+                      <div class="col">
+                        <div class="mb-3"><label class="form-label"><strong>Parent Name</strong></label><input formControlName="ParentName" value="{{parent.parentName}}" class="form-control" type="text"></div>
+                      </div>
+                      <div class="col">
+                        <div class="mb-3"><label class="form-label"><strong>Occupation</strong><br></label><input formControlName="Occupation" value="{{parent.occupation}}" class="form-control" type="text"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="mb-3"><label class="form-label"><strong>Phone Number 1</strong></label><input formControlName="PhoneNumber_1" value="{{parent.phoneNumber_1}}" class="form-control" type="text"></div>
+                      </div>
+                      <div class="col">
+                        <div class="mb-3"><label class="form-label"><strong>Phone Number 2</strong><br></label><input formControlName="PhoneNumber_2" value="{{parent.phoneNumber_2}}" class="form-control" type="text" id="country-1"></div>
+                      </div>
+                    </div>
+                    <div class="mb-3"><label class="form-label"><strong>City</strong></label><input formControlName="City" class="form-control" value="{{parent.city}}" type="text"></div>
+                    <div class="mb-3"><label class="form-label"><strong>Email</strong></label><input formControlName="Email" class="form-control" value="{{parent.email}}" type="text"></div>
+                    <div class="mb-3"><label class="form-label"><strong>Address 1</strong></label><input formControlName="Address_1" class="form-control" value="{{parent.address_1}}" type="text"></div>
+                    <div class="mb-3"><label class="form-label"><strong>Address 2</strong></label><input formControlName="Address_2" class="form-control" type="text" value="{{parent.address_2}}"></div>
+                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" (click)="Submit()">Save&nbsp;Settings</button><button (click)="delete(data.studentId)" class="btn btn-danger btn-circle ms-1" role="button"><i class="fas fa-trash text-white"></i></button></div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

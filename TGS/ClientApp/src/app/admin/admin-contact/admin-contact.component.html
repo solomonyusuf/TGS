@@ -1,0 +1,27 @@
+
+      <div class="col-md-12">
+
+        <div class="col-md-12">
+
+          <div class="container text-center">
+            <h3 class="">Database Messages &nbsp;<button class="btn btn-danger" (click)="clear()"> Clear Inbox </button> </h3>
+          </div>
+          <div class="col-md-12">
+            <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" name="value" [(ngModel)]="value" (ngModelChange)="search()" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search Date here"></label></div>
+          </div>
+        </div>
+        <div>
+          <div class="card shadow">
+            <div class="card-body" *ngFor="let contact of contacts ">
+              <h3><strong>{{contact.fullName}}</strong></h3>
+              <strong>{{contact.email}}</strong>
+              <p>{{contact.message}}</p>
+              <p>{{contact.timeStamp}}</p>
+              <p><button class="btn btn-danger" (click)="Delete(contact.id)">Delete</button></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    
+

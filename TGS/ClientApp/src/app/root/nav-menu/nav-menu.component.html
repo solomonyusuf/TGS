@@ -1,0 +1,35 @@
+<header>
+  <div class="d-flex flex-column" id="content-wrapper">
+    <div id="content">
+      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white navbar-light  bg-white shadow mb-4 topbar static-top">
+        <div class="container">
+
+            <a class="navbar-brand"[routerLink]="['/']"> <h1 style="text-align: center;font-style:italic; color: var(--bs-blue);"><i class="fas fa-coins"></i></h1></a>
+
+          <button class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse"
+                  aria-label="Toggle navigation"
+                  [attr.aria-expanded]="isExpanded"
+                  (click)="toggle()">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+               [ngClass]="{ show: isExpanded }">
+            <ul class="navbar-nav flex-grow">
+
+
+
+              <li class="nav-item" [routerLinkActive]="['link-active']">
+                <a class="nav-link text-dark" [routerLink]="['/contact']">Contact</a>
+              </li>
+            </ul>
+            <app-login-menu></app-login-menu>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+

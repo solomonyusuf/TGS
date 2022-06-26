@@ -1,0 +1,28 @@
+
+<div>
+  <div class="card">
+    <div class="card-body" style="margin:40px;">
+      <form>
+        <h2 class="text-center" style="color: var(--bs-blue);">Add Subjects</h2>
+        <div class="mb-3"><input class="form-control" type="text" name="Name" [(ngModel)]="subject.Name" placeholder="Enter Subject Name" /></div>
+        <div class="mb-3"><input class="form-control" type="text" name="FirstTest" [(ngModel)]="subject.FirstTest" placeholder="First Test" /></div>
+        <div class="mb-3"><input class="form-control" type="text" name="SecondTest" [(ngModel)]="subject.SecondTest" placeholder="Second Test" /></div>
+        <div class="mb-3"><input class="form-control" type="text" name="Attendance" [(ngModel)]="subject.Attendance" placeholder="Attendance" /></div>
+        <div class="mb-3"><input class="form-control" type="text" name="ExamScore" [(ngModel)]="subject.ExamScore" placeholder="ExamScore" /></div>
+        <div class="mb-3"><input class="form-control" type="text" name="Total" [(ngModel)]="subject.Total" placeholder="Total" /></div>
+        <div class="mb-3"><input class="form-control" type="text" name="ClassHighest" [(ngModel)]="subject.ClassHighest" placeholder="Class Highest" /></div>
+        <div class="mb-3"><input class="form-control" type="text" name="Percentage" [(ngModel)]="subject.Percentage" placeholder="Percentage" /></div>
+        <div class="mb-3"><input class="form-control" type="text" name="ClassLowest" [(ngModel)]="subject.ClassLowest" placeholder="Class Lowest" /></div>
+        <!--<div class="mb-3"><input class="form-control" type="text" name="Position" [(ngModel)]="subject.Position" placeholder="Position" /></div>-->
+        <div class="mb-3"><input class="form-control" type="text" name="Grade" [(ngModel)]="subject.Grade" placeholder="Grade" /></div>
+        <div class="mb-3"></div>
+        <div class="mb-3"></div>
+        <div class="mb-3"><button (click)="CreateSubject()" class="btn btn-primary text-center align-self-center" type="submit" style="text-align: center;margin: 15px;">Submit</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+

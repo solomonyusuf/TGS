@@ -1,0 +1,176 @@
+
+      <div class="col-md-12">
+        <div *ngIf=" (detail$|async) as data">
+          <h2 class="text-center">Create&nbsp; Result </h2>
+          <div>
+            <form>
+              <div class="card" *ngIf="!submit">
+                <div class="card-body" style="margin:30px;">
+                  <div class="mb-3"><input [(ngModel)]="result.Class" name="Class" class="form-control" type="text" placeholder="Class" /></div>
+                  <div class="mb-3"><input [(ngModel)]="result.ClassHighest" name="ClassHighest" class="form-control" type="text" placeholder="ClassHighest" /></div>
+                  <div class="mb-3"><input [(ngModel)]="result.ClassLowest" name="ClassLowest" class="form-control" type="text" placeholder="ClassLowest" /></div>
+                  <div class="mb-3"><input [(ngModel)]="result.Percentage" name="Percentage" class="form-control" type="text" placeholder="Percentage" /></div>
+                  <div class="mb-3"><input [(ngModel)]="result.Position" name="Position" class="form-control" type="text" placeholder="Position" /></div>
+                  <div class="mb-3"><input [(ngModel)]="result.Session" name="Session" class="form-control" type="text" placeholder="Session" /></div>
+                  <select class="form-select" name="Term" [(ngModel)]="result.Term">
+                    <option>----choose term----</option>
+                    <option>1st</option>
+                    <option>2nd</option>
+                    <option>3rd</option>
+                  </select>
+                  <div class="mb-3"></div>
+                  <div class="mb-3"></div>
+                  <div class="mb-3"></div>
+                  <div class="mb-3"><button class="btn btn-primary text-center align-self-center" (click)="Submit()" type="submit" style="text-align: center;margin: 15px;">Submit</button></div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <section *ngIf="submit">
+            <h2 class="text-center"> <strong style="color: var(--bs-indigo);">{{data.firstName}}&nbsp;{{data.lastName}}</strong></h2>
+
+            <div class="card">
+              <div class="card-body">
+
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6" style="border-style: solid; border-bottom-style: solid; border-color: blue;">
+                      <picture><img src="{{data.imgPath}}" width="150px" height="150px" style="margin: 5px;"></picture>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr></tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style="color: var(--bs-indigo);font-size: 20px;font-weight: bold;font-style: italic;">{{data.firstName}}&nbsp;{{data.lastName}}</td>
+                              <td style="font-weight:bolder;">{{data.sex}}</td>
+                            </tr>
+                            <tr>
+                              <td style="font-weight:bolder;">{{data.class}}</td>
+                              <td style="font-style:italic;"><strong>{{data.studentId}}</strong></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div><label class="form-label"></label>
+                    </div>
+                    <div class="col-md-6" style="border-width: 3px; border-style: solid; border-color: blue;">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr></tr>
+                          </thead>
+                          <tbody *ngFor="let parent of data.parent">
+                            <tr>
+                              <td style="font-weight:bolder;">{{parent.phoneNumber_1}}<br></td>
+                              <td style="font-weight:bolder;">{{parent.address_1}}</td>
+                            </tr>
+                            <tr>
+                              <td style="font-weight:bolder;">{{parent.email}}</td>
+                              <td style="font-weight:bolder;">{{parent.city}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr></tr>
+                          </thead>
+                          <tbody *ngIf=" results as result">
+                            <tr>
+                              <td style="font-weight:bolder;">{{result.session}}</td>
+                              <td style="font-weight:bolder;">{{result.term}}&nbsp;Term</td>
+                            </tr>
+                            <tr>
+                              <td style="font-weight:bolder;">{{result.position}}</td>
+                              <td style="font-weight:bolder;">{{result.percentage}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12" style="border-width: 3px;border-style: solid;border-color:blue;">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th style="text-align: center;">Subjects</th>
+                              <th style="text-align: center;">1st Test</th>
+                              <th style="text-align: center;">2nd Test</th>
+                              <th style="text-align: center;">Attendance</th>
+                              <th style="text-align: center;">Exam</th>
+                              <th style="text-align: center;">Percentage</th>
+                              <th style="text-align: center;">Position</th>
+                              <th style="text-align: center;">Class Highest</th>
+                              <th style="text-align: center;">Class Lowest</th>
+                              <th style="text-align: center;">Grade</th>
+                            </tr>
+                          </thead>
+                          <tbody *ngFor="let subject of data.results.subjects">
+                            <tr>
+                              <td class="subjects" style="font-weight: bold;font-style: italic;">{{subject.name}}</td>
+                              <td class="report" style="text-align: center;">{{subject.firstTest}}</td>
+                              <td class="report" style="text-align: center;">{{subject.SecondTest}}</td>
+                              <td class="report" style="text-align: center;">{{subject.attendance}}</td>
+                              <td class="report" style="text-align: center;">{{subject.examScore}}</td>
+                              <td class="report" style="text-align: center;">{{subject.percentage}}</td>
+                              <td class="report" style="text-align: center;">{{subject.position}}</td>
+                              <td class="report" style="text-align: center;">{{subject.classHighest}}</td>
+                              <td class="report" style="text-align: center;">{{subject.classLowest}}</td>
+                              <td class="report" style="font-weight: bold;font-style: italic;text-align: center;">{{subject.grade}}</td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container" style="box-shadow: 0px 0px;">
+                  <div class="row">
+                    <div class="col-md-12" style="filter: brightness(68%) hue-rotate(27deg);">
+                      <p style="font-weight: bold;font-style: italic;font-size: 20px;">Teacher's Remarks</p>
+                      <div class="card">
+                        <div class="card-body" style="background: var(--bs-body-bg);">
+                          <h4 class="card-title"></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div><br />
+              <div class="card-body" style="margin:40px;">
+                <form>
+                  <h2 class="text-center" style="color: var(--bs-blue);">Add Subjects</h2>
+                  <div class="mb-3"><input class="form-control" type="text" name="Name" [(ngModel)]="subject.Name" placeholder="Enter Subject Name" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="FirstTest" [(ngModel)]="subject.FirstTest" placeholder="First Test" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="SecondTest" [(ngModel)]="subject.SecondTest" placeholder="Second Test" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="Attendance" [(ngModel)]="subject.Attendance" placeholder="Attendance" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="ExamScore" [(ngModel)]="subject.ExamScore" placeholder="ExamScore" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="Total" [(ngModel)]="subject.Total" placeholder="Total" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="ClassHighest" [(ngModel)]="subject.ClassHighest" placeholder="Class Highest" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="ClassLowest" [(ngModel)]="subject.ClassLowest" placeholder="Class Lowest" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="Percentage" [(ngModel)]="subject.Position" placeholder="Position" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="Position" [(ngModel)]="subject.Percentage" placeholder="Percentage" /></div>
+                  <div class="mb-3"><input class="form-control" type="text" name="Grade" [(ngModel)]="subject.Grade" placeholder="Grade" /></div>
+                  <div class="mb-3"></div>
+                  <div class="mb-3"></div>
+                  <div class="mb-3"><button (click)="CreateSubject()" class="btn btn-primary text-center align-self-center" type="submit" style="text-align: center;margin: 15px;">Submit</button></div>
+                </form>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+  
+
+
+
+

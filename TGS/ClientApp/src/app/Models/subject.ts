@@ -1,0 +1,15 @@
+export interface Subject {
+  StudentId: '',
+  ResultId: '',
+  Name: '',
+  FirstTest: '',
+  SecondTest: '',
+  Attendance: '',
+  ExamScore: '',
+  Total: '',
+  Position: '',
+  ClassHighest: '',
+  ClassLowest: '',
+  Percentage: '',
+  Grade: '',
+}

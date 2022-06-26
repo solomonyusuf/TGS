@@ -1,0 +1,31 @@
+<div class="card shadow" *ngIf="(detail$|async) as data">
+  <div class="card-header py-3">
+    <p class="text-primary m-0 fw-bold">View Result</p>
+  </div>
+  <div class="card-body">
+    <div class="row">
+    </div>
+    <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+      <table class="table my-0" id="dataTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Term</th>
+            <th>Class</th>
+            <th>Result ID</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of data.results">
+            <td><img class="rounded-circle me-2" width="30" height="30" src="{{data.imgPath}}">{{data.firstName}}&nbsp;{{data.lastName}}</td>           
+              <td>{{result.term}}</td>
+              <td>{{result.class}}</td>
+              <td>{{result.resultId}}</td>
+              <td><a routerLink="/resultdetail/{{result.resultId}}" class="btn btn-info">view</a></td> 
+              </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

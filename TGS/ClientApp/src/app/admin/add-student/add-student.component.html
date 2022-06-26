@@ -1,0 +1,85 @@
+
+
+<div class="col-md-12">
+  <div class="container-fluid" style="background: var(--bs-blue);">
+    <section class="contact-clean" *ngIf="!submitted">
+      <form (ngSubmit)="Submit()">
+        <h2 class="text-center" style="text-align: left;color: var(--bs-blue);font-style: italic;font-weight: bold;">Add Student</h2>
+        <div class="card" style="margin: 10px;">
+          <div class="card-body text-center" style="margin: 0;">
+            <img class="rounded-circle img-fluid shadow justify-content-center align-content-center align-self-center" src="{{response.dbPath}}" width="200px" height="200px" style="border-style: none;" />
+
+          </div>
+
+        </div>
+        <div class="col-md-4"> <upload (onUploadFinished)="uploadFinished($event)"></upload></div>
+        <div class="mb-3"><input class="form-control" type="text" [(ngModel)]="student.FirstName" name="FirstName" placeholder="Enter First Name"></div>
+        <div class="mb-3"><input class="form-control" type="text" [(ngModel)]="student.LastName" name="LastName" placeholder="Enter Last Name"></div>
+        <div class="mb-3"><input class="form-control" type="text" [(ngModel)]="student.MiddleName" name="MiddleName" placeholder="Enter Middle Name"></div>
+        <div class="mb-3"><input class="form-control" type="text" [(ngModel)]="student.Class" name="Class" placeholder="Enter Class"></div>
+        <label>Sex</label>
+        <select [(ngModel)]="student.Sex" name="Sex" class="form-select">
+          <option value="NULL">---choose sex---</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <label>Status</label>
+        <select [(ngModel)]="student.Status" name="status" class="form-select">
+          <option value="NULL">---choose Status---</option>
+          <option value="Graduated">Graduated</option>
+          <option value="Active">Active</option>
+        </select>
+        <div class="mb-3"></div>
+        <label class="form-label">Enter Date of Birth</label><input [(ngModel)]="student.DOB" name="DOB" class="form-control" type="date">
+        <div class="mb-3"></div>
+        <div class="mb-3"><input class="form-control" type="text" [(ngModel)]="student.OriginState" name="OriginState" placeholder="Enter State of Origin"></div>
+        <div class="mb-3"></div>
+        <div class="mb-3"></div>
+        <div class="mb-3"></div>
+        <div class="mb-3"><button class="btn btn-primary text-center align-self-center" type="submit" style="text-align: center;margin: 15px;">Submit</button></div>
+      </form>
+    </section>
+    <ng-container *ngIf="submitted">
+      <div class="card shadow">
+        <div class="card-header py-3">
+          <p class="text-primary m-0 fw-bold">Parent info </p>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="Create()">
+            <div class="row">
+              <div class="col">
+                <div class="mb-3"><label class="form-label"><strong>Parent Name</strong></label><input [(ngModel)]="parent.ParentName" name="ParentName" class="form-control" type="text"></div>
+              </div>
+              <div class="col">
+                <div class="mb-3"><label class="form-label"><strong>Occupation</strong><br></label><input [(ngModel)]="parent.Occupation" name="Occupation" class="form-control" type="text"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="mb-3"><label class="form-label"><strong>Phone Number 1</strong></label><input [(ngModel)]="parent.PhoneNumber_1" name="PhoneNumber_1" class="form-control" type="text"></div>
+              </div>
+              <div class="col">
+                <div class="mb-3"><label class="form-label"><strong>Phone Number 2</strong><br></label><input [(ngModel)]="parent.PhoneNumber_2" name="PhoneNumber_2" class="form-control" type="text"></div>
+              </div>
+            </div>
+            <div class="mb-3"><label class="form-label"><strong>City</strong></label><input [(ngModel)]="parent.City" name="City" class="form-control" type="text"></div>
+            <div class="mb-3"><label class="form-label"><strong>Email</strong></label><input [(ngModel)]="parent.Email" name="Email" class="form-control" type="text"></div>
+            <div class="mb-3"><label class="form-label"><strong>Address 1</strong></label><input [(ngModel)]="parent.Address_1" name="Address_1" class="form-control"></div>
+            <div class="mb-3"><label class="form-label"><strong>Address 2</strong></label><input [(ngModel)]="parent.Address_2" name="Address_2" class="form-control"></div>
+            <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
+          </form>
+        </div>
+      </div>
+
+    </ng-container>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

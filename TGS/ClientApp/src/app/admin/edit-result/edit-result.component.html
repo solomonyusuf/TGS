@@ -1,0 +1,28 @@
+
+  <div class="col">
+    <div class="row">
+      <div class="card-body" style="margin:40px;">
+        <form [formGroup]="subject">
+          <h2 class="text-center" style="color: var(--bs-blue);">Edit Subject</h2>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="Name" placeholder="Enter Subject Name" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="FirstTest" placeholder="First Test" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="SecondTest" placeholder="Second Test" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="Attendance" placeholder="Attendance" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="ExamScore" placeholder="ExamScore" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="Total" placeholder="Total" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="ClassHighest" placeholder="Class Highest" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="ClassLowest" placeholder="Class Lowest" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="Position" placeholder="Position" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="Percentage" placeholder="Percentage" /></div>
+          <div class="mb-3"><input class="form-control" type="text" formControlName="Grade" placeholder="Grade" /></div>
+          <div class="mb-3"></div>
+          <div class="mb-3"></div>
+          <div class="mb-3"><button (click)="CreateSubject()" class="btn btn-primary text-center align-self-center" type="submit" style="text-align: center;margin: 15px;">Submit</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+

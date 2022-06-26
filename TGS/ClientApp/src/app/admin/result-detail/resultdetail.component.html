@@ -1,0 +1,132 @@
+
+      <div class="col-md-12">
+        <div *ngIf=" detail as data">
+            <h2 class="text-center"> Result for <strong style="color: var(--bs-indigo);">{{data.firstName}}&nbsp;{{data.lastName}}</strong></h2>
+
+            <div class="card">
+              <div class="card-body">
+
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6" style="border-style: solid; border-bottom-style: solid; border-color: blue;">
+                      <picture><img class="rounded-circle mb-3 mt-4" src="{{data.imgPath}}" width="150px" height="150px" style="margin: 5px;"></picture>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr></tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style="color: var(--bs-indigo);font-size: 20px;font-weight: bold;font-style: italic;">{{data.firstName}}&nbsp;{{data.lastName}}</td>
+                              <td style="font-weight:bolder;">{{data.sex}}</td>
+                            </tr>
+                            <tr>
+                              <td style="font-weight:bolder;">{{data.class}}</td>
+                              <td style="font-style:italic;"><strong>{{data.studentId}}</strong></td>
+                            </tr>
+                            <br />
+
+                          </tbody>
+                        </table>
+                      </div><label class="form-label"></label>
+                    </div>
+                    <div class="col-md-6" style="border-width: 3px; border-style: solid; border-color: blue;">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr></tr>
+                          </thead>
+                          <tbody *ngFor="let parent of data.parent">
+                            <tr>
+                              <td style="font-weight:bolder;">{{parent.phoneNumber_1}}<br></td>
+                              <td style="font-weight:bolder;">{{parent.address_1}}</td>
+                            </tr>
+                            <tr>
+                              <td style="font-weight:bolder;">{{parent.email}}</td>
+                              <td style="font-weight:bolder;">{{parent.city}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="table-responsive">
+                        <table class="table">
+
+                          <tbody *ngIf=" results as result">
+                            <tr>
+                              <td style="font-weight:bolder;">{{result.session}}&nbsp;Session</td>
+                              <td style="font-weight:bolder;">{{result.term}}&nbsp;Term</td>
+                            </tr>
+                            <tr>
+                              <td style="font-weight:bolder;">{{result.position}}&nbsp;Position</td>
+                              <td style="font-weight:bolder;">{{result.percentage}}%</td>
+                            </tr>
+                            <tr>
+                              <a class="btn btn-outline-info  mb-3" style="margin:15px;" routerLink="/addsubject/{{result.resultId}}">Add Subject</a>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12" style="border-width: 3px;border-style: solid;border-color:blue;">
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th style="text-align: center;">Subjects</th>
+                              <th style="text-align: center;">1st Test</th>
+                              <th style="text-align: center;">2nd Test</th>
+                              <th style="text-align: center;">Attendance</th>
+                              <th style="text-align: center;">Exam</th>
+                              <th style="text-align: center;">Percentage</th>
+                              <th style="text-align: center;">Class Highest</th>
+                              <th style="text-align: center;">Class Lowest</th>
+                              <th style="text-align: center;">Grade</th>
+                            </tr>
+                          </thead>
+
+                          <tbody *ngFor="let subject of results.subjects">
+
+                            <tr>
+                              <td class="subjects" style="font-weight: bold;font-style: italic;">{{subject.name}}</td>
+                              <td class="report" style="text-align: center;">{{subject.firstTest}}</td>
+                              <td class="report" style="text-align: center;">{{subject.secondTest}}</td>
+                              <td class="report" style="text-align: center;">{{subject.attendance}}</td>
+                              <td class="report" style="text-align: center;">{{subject.examScore}}</td>
+                              <td class="report" style="text-align: center;">{{subject.percentage}}</td>
+                              <td class="report" style="text-align: center;">{{subject.classHighest}}</td>
+                              <td class="report" style="text-align: center;">{{subject.classLowest}}</td>
+                              <td class="report" style="font-weight: bold;font-style: italic;text-align: center;">{{subject.grade}}</td>
+                              <td><a routerLink="/editresult/{{subject.subjectId}}" class="btn btn-info">Edit</a></td>
+                              <td><button (click)="Delete(subject.subjectId)" class="btn btn-danger"><i class="fa fa-remove"></i></button></td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container" style="box-shadow: 0px 0px;">
+                  <div class="row">
+                    <div class="col-md-12" style="filter: brightness(68%) hue-rotate(27deg);">
+                      <p style="font-weight: bold;font-style: italic;font-size: 20px;">Teacher's Remarks</p>
+                      <div class="card">
+                        <div class="card-body" style="background: var(--bs-body-bg);">
+                          <h4 class="card-title"></h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div><br />
+            </div>
+
+        </div>
+    </div>
+ 
+
